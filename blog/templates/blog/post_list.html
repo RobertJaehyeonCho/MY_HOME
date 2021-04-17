@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    {% load static %}
+    <style>
+        * { padding:0; margin:0; }
+        body { font-family: 'Roboto', sans-serif;
+               background: }
+
+        .contents {
+            width: 980px;
+            margin: 150px auto;
+        }
+
+        .item {
+            display: inline-block;
+            width: 300px;
+            margin: 80px 10px;
+            border: 1px solid white;
+            box-sizing: border-box
+            text-align: center;
+            position: relative;
+        }
+
+        .item img {
+            width: 300px;
+            height: 400px;
+        }
+
+        .item .intro {
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0;
+            width: 300px;
+            height: 400px;
+            background: #000;
+            opacity: 0;
+            transition: 0.8s;
+        }
+
+        .intro:hover{
+            opacity: 0.68;
+
+        }
+
+        .title{
+            font-size: xx-large;
+            position: relative;
+            align: center;
+        }
+
+        .description{
+            font-size: x-large;
+            position: relative;
+
+        }
+
+        .nav {
+            position: fixed;
+            top: 80px;
+            left: 150px;
+        }
+
+        .nav a {
+            text-decoration: none;
+        }
+
+        .nav>ul {
+            list-style: none;
+            font-size: x-large;
+        }
+
+        .nav>ul>li{
+            display: inline-block;
+            color: #222;
+            margin: 0px 5px;
+        }
+
+        .nav>ul>li:hover{
+            border-bottom: 4px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
+            <li><a href="{% url 'blog' %}">BLOG</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+        </ul>
+    </div>
+    <div class="contents">
+        {% for object in object_list %}
+        <div class="item">
+            <div><img src="{{object.image.url }}" alt=""></div>
+            <div class="intro">
+                <div class="title">{{object.title}}</div>
+                <br/>
+                <div class="description">{{ object.description }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
