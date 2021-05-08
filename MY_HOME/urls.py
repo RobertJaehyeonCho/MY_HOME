@@ -14,8 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from MY_HOME.views import IndexView, AboutView
+from django.urls import path, include
+from MY_HOME.views import IndexView, AboutView, UserCreateView, UserCreateDoneTV
 from bookmark.views import BookmarkDV, BookmarkLV
 from blog.views import PostLV
 
@@ -29,5 +29,11 @@ urlpatterns = [
          name='bookmark_index'),
     path('bookmark/<pk>', BookmarkDV.as_view(), name='bookmark_detail'),
     path('about/', AboutView.as_view(), name="about"),
+
+    path('accounts/',
+         include('django.contrib.auth.urls')),
+
+    path('accounts/register/', UserCreateView.as_view(), name='register'),
+    path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done'),
     path('blog/', PostLV.as_view(), name="blog"),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -25,7 +25,7 @@ SECRET_KEY = 'z=b*r#%u&kzpnqu3j+7$is2xn3yzwel!uvy(6sa^v*(iniv2o2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -123,3 +123,6 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(BASE_DIR/'media')
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

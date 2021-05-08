@@ -9,14 +9,22 @@
         body { font-family: 'Do Hyeon', sans-serif;
                 background: rgb(131,58,180);
                 background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);}
-        a { text-decoration: none;
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #main_nav a {
             color: #f5f5f5;
             font-size: 50px;
             margin: 0 20px;
             transition: 0.5s;
             }
 
-        a:hover{
+        #main_nav a:hover{
             color: #D3D3D3;
         }
 
@@ -26,14 +34,51 @@
              height: 100vh;
              justify-content: center;
              align-items: center;}
+
+        #auth2{
+            position: absolute;
+            top: 50px;
+            right:100px;
+
+        }
+
+        #auth2 li {
+            display: inline-block;
+            font-size: x-large;
+            margin: 0 8px;
+        }
+
+        #auth2 li>a {
+            color: #fff;
+        }
+
+        #auth2 a:hover{
+            border-bottom: 4px solid #fff;
+        }
+
     </style>
 </head>
 <body>
     <div class="contents">
-        <a href="{%url 'bookmark_index' %}" class="bookmark">BOOKMARK</a>
-        <a href="{%url 'blog' %}" class="blog">BLOG</a>
-        <a href="{%url 'about' %}" class="about">ABOUT</a>
+        <div id="auth2">
+            {% if user.is_active %}
+            <ul>
+                <li style="font-size: large; color: #222;">{{user.get_username}} Login</li>
+                <li><a class="auth_menu" href="{% url 'logout' %}">Sign out</a></li>
+                <li><a class="auth_menu" href="#">PW Change</a></li>
+            </ul>
+            {% else %}
+            <ul>
+                <li><a class="auth_menu" href="{% url 'login' %}">Sign in</a></li>
+                <li><a class="auth_menu" href="{% url 'register' %}">Sign up</a></li>
+            </ul>
+            {% endif %}
+        </div>
+        <div id="main_nav">
+            <a href="{%url 'bookmark_index' %}" class="bookmark">BOOKMARK</a>
+            <a href="{%url 'blog' %}" class="blog">BLOG</a>
+            <a href="{%url 'about' %}" class="about">ABOUT</a>
+        </div>
     </div>
-
 </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+        * { padding:0; margin:0; }
+        body { font-family: 'Do Hyeon', sans-serif;
+                background: rgb(131,58,180);
+                background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);}
+
+        .contents {
+            text-align: center;
+            margin-top: 200px;
+            font-size: xx-large;
+        }
+
+        .contents div }
+            margin-bottom: 10px;
+        }
+
+        .contents input {
+            height: 25px;
+        }
+
+        .contents button {
+            width: 320px;
+            height: 60px;
+            margin-top: 20px;
+            font-size: x-large;
+        }
+    </style>
+</head>
+<body>
+<div class="contents">
+    <form method="post" action=".">{% csrf_token %}
+    <div class="name">
+        {{ form.username.label_tag }} {{ form.username }}
+    </div>
+    <div class="pass">
+        {{ form.password.label_tag }} {{ form.password }}
+    </div>
+    <button type="submit">SIGN IN</button>
+    <input type="hidden" value="{{ next }}">
+</div>
+</form>
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+        * { padding:0; margin:0; }
+        body { font-family: 'Do Hyeon', sans-serif;
+                background: rgb(131,58,180);
+                background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);}
+
+        .contents {
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+        }
+
+        form {
+            margin-top: 200px;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 200px;
+            font-size: x-large;
+            padding: 20px;
+            margin-left: 620px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contents">
+        <form method="post" action=".">{% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{form.password1.label_tag }}</td>
+                    <td>{{ form.password1 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password2.label_tag }}</td>
+                    <td>{{ form.password2 }}</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <button type="submit">SIGN UP</button>
+</body>
+</html>
