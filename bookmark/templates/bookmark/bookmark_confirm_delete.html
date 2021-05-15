@@ -10,6 +10,10 @@
                 background: rgb(131,58,180);
                 background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);}
 
+        a {
+            text-decoration: none;
+            color: #000;
+        }
         .contents {
             text-align: center;
             margin-top: 200px;
@@ -22,6 +26,7 @@
 
         .contents input {
             height: 25px;
+            width: 300px;
         }
 
         .contents button {
@@ -34,15 +39,13 @@
 </head>
 <body>
 <div class="contents">
-    <form method="post" action=".">{% csrf_token %}
-    <div class="name">
-        {{ form.username.label_tag }} {{ form.username }}
-    </div>
-    <div class="pass">
-        {{ form.password.label_tag }} {{ form.password }}
-    </div>
-    <button type="submit">SIGN IN</button>
-    <input type="hidden" value="{{ next }}">
+    <form method="post" action="./{{bookmark.id}}">{% csrf_token %}
+        <h4>TITLE: {{bookmark.title }}</h4>
+        <h4>URL : {{ bookmark.url }}</h4>
+        <br>
+        <h3>삭제하시겠습니까?</h3>
+        <button type="submit">DELETE</button>
+        <button type="button"><a href="{% url 'bookmark_detail' bookmark.id %}">NO</a></button>
     </form>
 </div>
 </body>

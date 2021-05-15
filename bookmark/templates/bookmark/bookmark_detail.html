@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>BOOKMARK DETAIL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        * { padding:0; margin:0; }
+    * { padding:0; margin:0; }
         body { font-family: 'Dela Gothic One', cursive;
                display: flex;
                background: rgb(238,174,202);
@@ -37,6 +39,12 @@
 </head>
 <body>
     <div class="contents">
+        <a href="{% url 'bookmark_update' bookmark.id %}">
+            <i class="fa fa-upload"></i>
+        </a>
+        <a href="{% url 'bookmark_delete' bookmark.id %}">
+            <i class="fa fa-trash-o"></i>
+        </a>
         <div>{{ object.title }}</div>
         <div><a href="{{ object.url }}" target="_blank">{{ object.url }}</a>
         </div>

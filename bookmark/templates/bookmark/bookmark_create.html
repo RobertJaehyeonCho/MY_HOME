@@ -22,6 +22,7 @@
 
         .contents input {
             height: 25px;
+            width: 300px;
         }
 
         .contents button {
@@ -34,15 +35,15 @@
 </head>
 <body>
 <div class="contents">
-    <form method="post" action=".">{% csrf_token %}
-    <div class="name">
-        {{ form.username.label_tag }} {{ form.username }}
-    </div>
-    <div class="pass">
-        {{ form.password.label_tag }} {{ form.password }}
-    </div>
-    <button type="submit">SIGN IN</button>
-    <input type="hidden" value="{{ next }}">
+    <form method="post" action="./create">{% csrf_token %}
+        <div class="name">
+            {{ form.title.label_tag }} {{ form.title }}
+        </div>
+        <div class="pass">
+            {{ form.url.label_tag }} {{ form.url }}
+        </div>
+        <button type="submit">CREATE</button>
+        <input type="hidden" value="{{ next }}">
     </form>
 </div>
 </body>

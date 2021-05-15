@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from MY_HOME.views import IndexView, AboutView, UserCreateView, UserCreateDoneTV
-from bookmark.views import BookmarkDV, BookmarkLV
+from MY_HOME.views import IndexView, AboutView, UserCreateView, UserCreateDoneTV, CreateView
+from bookmark.views import BookmarkDV, BookmarkLV, BookmarkCV,  BookmarkUV, BookmarkRV
 from blog.views import PostLV
 
 from django.conf.urls.static import static
@@ -27,9 +27,14 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('bookmark/', BookmarkLV.as_view(),
          name='bookmark_index'),
+    path('bookmark/delete/<pk>', BookmarkRV.as_view(), name='bookmark_delete'),
+    path('bookmark/update/<pk>', BookmarkUV.as_view(), name="bookmark_update"),
+    path('bookmark/create', BookmarkCV.as_view(), name='bookmark_create'),
     path('bookmark/<pk>', BookmarkDV.as_view(), name='bookmark_detail'),
-    path('about/', AboutView.as_view(), name="about"),
 
+    path('accounts/register/', UserCreateView.as_view(),name='register' ),
+
+    path('about/', AboutView.as_view(), name="about"),
     path('accounts/',
          include('django.contrib.auth.urls')),
 

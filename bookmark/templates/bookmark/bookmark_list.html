@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>BOOKMARK LIST</title>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
     * { padding:0; margin:0; }
         body { font-family: 'Do Hyeon', sans-serif;
@@ -13,8 +14,9 @@
                width: 100%;
                height: 100vh;
                justify-content: center;
-               align-items: center;}
-    .contents a {
+               align-items: center;
+        }
+    .contents ul a {
         display: inline-block;
         text-decoration: none;
         color: #fff;
@@ -27,7 +29,7 @@
         transition: 0.5s;
        }
 
-       .contents a:hover{
+       .contents ul a:hover{
         background: rgba(0, 0, 0, 1);
        }
 
@@ -67,9 +69,14 @@
         }
 
         .footer {
-            posisition: fixed;
+            position: fixed;
             bottom: 30px;
             text
+        }
+
+        .icon {
+            font-size: 50px;
+            color: #000;
         }
 
     </style>
@@ -82,7 +89,11 @@
                 <li><a href="{% url 'blog' %}">BLOG</a></li>
                 <li><a href="{% url 'about' %}">ABOUT</a></li>
             </ul>
+        </div>
     <div class="contents">
+        <a class="icon" href="{% url 'bookmark_create' %}">
+            <i class="fa fa-plus-square"></i>
+        </a>
     <ul>
         {% for obj in object_list%}
             <li><a href="{% url 'bookmark_detail' obj.id %}">{{obj.title}}</a></li>
@@ -92,7 +103,7 @@
     <div class="footer">
        <div>
            Email: 2026rcho@dis.sc.kr
-           copyright @ robrt. All rights reserved.
+           copyright @ robert. All rights reserved.
        </div>
     </div>
 
