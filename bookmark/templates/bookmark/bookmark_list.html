@@ -91,9 +91,6 @@
             </ul>
         </div>
     <div class="contents">
-        <a class="icon" href="{% url 'bookmark_create' %}">
-            <i class="fa fa-plus-square"></i>
-        </a>
     <ul>
         {% for obj in object_list%}
             <li><a href="{% url 'bookmark_detail' obj.id %}">{{obj.title}}</a></li>

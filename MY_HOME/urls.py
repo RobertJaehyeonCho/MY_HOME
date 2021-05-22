@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from MY_HOME.views import IndexView, AboutView, UserCreateView, UserCreateDoneTV, CreateView
 from bookmark.views import BookmarkDV, BookmarkLV, BookmarkCV,  BookmarkUV, BookmarkRV
-from blog.views import PostLV
+from blog.views import PostLV, PostCV, PostDV, PostUV
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -41,4 +41,7 @@ urlpatterns = [
     path('accounts/register/', UserCreateView.as_view(), name='register'),
     path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done'),
     path('blog/', PostLV.as_view(), name="blog"),
+    path('blog/create', PostCV.as_view(), name="blog_create"),
+    path('blog/update/<pk>', PostUV.as_view(), name="blog_update"),
+    path('blog/delete/<pk>', PostDV.as_view(), name="blog_delete"),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

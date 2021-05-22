@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="contents">
+    <form method="post" action="./{{post.id}}">{% csrf_token %}
+        <h4>TITLE: {{post.title }}</h4>
+        <img src="{{post.image.url}}" alt="">
+        <br>
+        <h3>삭제하시겠습니까?</h3>
+        <button type="submit">DELETE</button>
+        <button type="button"><a href="{% url 'blog' %}">NO</a></button>
+    </form>
+</div>
+</body>
+</html>

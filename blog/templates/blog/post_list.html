@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>POST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     {% load static %}
     <style>
@@ -98,14 +100,23 @@
     <div class="contents">
         {% for object in object_list %}
         <div class="item">
-            <div><img src="{{object.image.url }}" alt=""></div>
+            <div><img src="{{ object.image.url }}" alt="" ></div>
             <div class="intro">
                 <div class="title">{{object.title}}</div>
                 <br/>
                 <div class="description">{{ object.description }}</div>
             </div>
         </div>
+            <a class="icon" href="{% url 'blog_update' object.id %}">
+                <i class="fa fa-repeat"></i>
+            </a>
+            <a class="icon" href="{% url 'blog_delete' object.id %}">
+                <i class="fa fa-trash-o"></i>
+            </a>
         {% endfor %}
     </div>
+    <a class="icon" href="{% url 'blog_create' %}">
+        <i class="fa fa-plus-square"></i>
+    </a>
 </body>
 </html>
